@@ -1,5 +1,6 @@
 <h1>LetsGo#home</h1>
 <p>Find me in app/views/lets_go/home.html.erb</p>
+<%= 'icon: {url: \"http://maps.google.com/mapfiles/ms/icons/blue-dot.png\"}' %>
 
 <div id="map">
   <script>
@@ -12,38 +13,23 @@
         },
         zoom: 17
       });
-      var maker = new google.maps.Marker({
+
+      <% LandMark.all.each do |mark| %>
+      var _<%= mark.id %> = new google.maps.Marker({
+        map: map,
         position: {
-          lat: 51.243325,
-          lng: -0.589844
+          lat : <%= mark.lat %>,
+          lng: <%= mark.long %>
         },
-        map: map
-      })
+        <% if mark.is_gym %>
+          <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/red-dot.png\"}" %>
+        <% else %>
+          <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/blue-dot.png\"}" %>
+        <% end %>
+      });
+      <% end %>
     }
   </script>
 </div>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Lat</th>
-    <th>Long</th>
-  </tr>
-  <% LandMark.all.each do |data| %>
-    <tr>
-      <td><%= data.name %></td>
-      <td>
-        <% if data.is_gym %>
-          <%= 'Gym' %>
-        <% else %>
-          <%= 'Poke Stop' %>
-        <% end %>
-      </td>
-      <td><%= data.lat %></td>
-      <td><%= data.long %></td>
-    </tr>
-  <% end %>
-</table>
 
 <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVqQXR-NMqREuqwTCTA58MmYWAa_LyOEg&callback=initMap"></script>
