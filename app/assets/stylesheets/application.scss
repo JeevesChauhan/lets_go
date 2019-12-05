@@ -11,5 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
- @import "bootstrap";
+ // This allows the other .scss files to work
+@import "/\*";
+// Allows the use of boostrap
+@import "bootstrap";
