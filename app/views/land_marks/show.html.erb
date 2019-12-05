@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @land_mark.name %>
+</p>
+
+<p>
+  <strong>Is gym:</strong>
+  <%= @land_mark.is_gym %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @land_mark.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @land_mark.long %>
+</p>
+
+<%= link_to 'Edit', edit_land_mark_path(@land_mark) %> |
+<%= link_to 'Back', land_marks_path %>

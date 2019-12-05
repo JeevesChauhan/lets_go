@@ -1,0 +1,32 @@
+<%= form_with(model: plan_raid, local: true) do |form| %>
+  <% if plan_raid.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plan_raid.errors.count, "error") %> prohibited this plan_raid from being saved:</h2>
+
+      <ul>
+      <% plan_raid.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :spot_raid_id %>
+    <%= form.text_field :spot_raid_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.time_select :start_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

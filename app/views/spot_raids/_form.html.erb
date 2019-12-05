@@ -1,0 +1,42 @@
+<%= form_with(model: spot_raid, local: true) do |form| %>
+  <% if spot_raid.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spot_raid.errors.count, "error") %> prohibited this spot_raid from being saved:</h2>
+
+      <ul>
+      <% spot_raid.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :land_mark_id %>
+    <%= form.text_field :land_mark_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pokemon_id %>
+    <%= form.text_field :pokemon_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tier %>
+    <%= form.number_field :tier %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remaining_time %>
+    <%= form.time_select :remaining_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

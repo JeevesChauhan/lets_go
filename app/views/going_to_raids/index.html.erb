@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Going To Raids</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Plan raid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @going_to_raids.each do |going_to_raid| %>
+      <tr>
+        <td><%= going_to_raid.user %></td>
+        <td><%= going_to_raid.plan_raid %></td>
+        <td><%= link_to 'Show', going_to_raid %></td>
+        <td><%= link_to 'Edit', edit_going_to_raid_path(going_to_raid) %></td>
+        <td><%= link_to 'Destroy', going_to_raid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Going To Raid', new_going_to_raid_path %>

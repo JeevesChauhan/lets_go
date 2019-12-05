@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @poke_event.user %>
+</p>
+
+<p>
+  <strong>Land mark:</strong>
+  <%= @poke_event.land_mark %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @poke_event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @poke_event.description %>
+</p>
+
+<%= link_to 'Edit', edit_poke_event_path(@poke_event) %> |
+<%= link_to 'Back', poke_events_path %>

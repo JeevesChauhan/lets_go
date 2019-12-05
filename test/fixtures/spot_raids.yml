@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  land_mark: one
+  pokemon: one
+  tier: 1
+  remaining_time: 2019-12-05 16:37:49
+
+two:
+  user: two
+  land_mark: two
+  pokemon: two
+  tier: 1
+  remaining_time: 2019-12-05 16:37:49

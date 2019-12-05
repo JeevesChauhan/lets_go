@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @going_to_raid.user %>
+</p>
+
+<p>
+  <strong>Plan raid:</strong>
+  <%= @going_to_raid.plan_raid %>
+</p>
+
+<%= link_to 'Edit', edit_going_to_raid_path(@going_to_raid) %> |
+<%= link_to 'Back', going_to_raids_path %>

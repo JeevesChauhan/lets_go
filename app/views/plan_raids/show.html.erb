@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @plan_raid.user %>
+</p>
+
+<p>
+  <strong>Spot raid:</strong>
+  <%= @plan_raid.spot_raid %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @plan_raid.start_time %>
+</p>
+
+<%= link_to 'Edit', edit_plan_raid_path(@plan_raid) %> |
+<%= link_to 'Back', plan_raids_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Land Marks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Is gym</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @land_marks.each do |land_mark| %>
+      <tr>
+        <td><%= land_mark.name %></td>
+        <td><%= land_mark.is_gym %></td>
+        <td><%= land_mark.lat %></td>
+        <td><%= land_mark.long %></td>
+        <td><%= link_to 'Show', land_mark %></td>
+        <td><%= link_to 'Edit', edit_land_mark_path(land_mark) %></td>
+        <td><%= link_to 'Destroy', land_mark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Land Mark', new_land_mark_path %>

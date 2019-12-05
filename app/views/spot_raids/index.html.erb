@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spot Raids</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Land mark</th>
+      <th>Pokemon</th>
+      <th>Tier</th>
+      <th>Remaining time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spot_raids.each do |spot_raid| %>
+      <tr>
+        <td><%= spot_raid.user %></td>
+        <td><%= spot_raid.land_mark %></td>
+        <td><%= spot_raid.pokemon %></td>
+        <td><%= spot_raid.tier %></td>
+        <td><%= spot_raid.remaining_time %></td>
+        <td><%= link_to 'Show', spot_raid %></td>
+        <td><%= link_to 'Edit', edit_spot_raid_path(spot_raid) %></td>
+        <td><%= link_to 'Destroy', spot_raid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spot Raid', new_spot_raid_path %>

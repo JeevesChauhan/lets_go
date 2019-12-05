@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Poke Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Land mark</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @poke_events.each do |poke_event| %>
+      <tr>
+        <td><%= poke_event.user %></td>
+        <td><%= poke_event.land_mark %></td>
+        <td><%= poke_event.title %></td>
+        <td><%= poke_event.description %></td>
+        <td><%= link_to 'Show', poke_event %></td>
+        <td><%= link_to 'Edit', edit_poke_event_path(poke_event) %></td>
+        <td><%= link_to 'Destroy', poke_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Poke Event', new_poke_event_path %>

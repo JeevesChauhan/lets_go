@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @spot_raid.user %>
+</p>
+
+<p>
+  <strong>Land mark:</strong>
+  <%= @spot_raid.land_mark %>
+</p>
+
+<p>
+  <strong>Pokemon:</strong>
+  <%= @spot_raid.pokemon %>
+</p>
+
+<p>
+  <strong>Tier:</strong>
+  <%= @spot_raid.tier %>
+</p>
+
+<p>
+  <strong>Remaining time:</strong>
+  <%= @spot_raid.remaining_time %>
+</p>
+
+<%= link_to 'Edit', edit_spot_raid_path(@spot_raid) %> |
+<%= link_to 'Back', spot_raids_path %>

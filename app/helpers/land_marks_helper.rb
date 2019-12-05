@@ -1,0 +1,2 @@
+module LandMarksHelper
+end

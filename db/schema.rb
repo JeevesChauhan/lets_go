@@ -10,7 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_135550) do
+ActiveRecord::Schema.define(version: 2019_12_05_163759) do
+
+  create_table "going_to_raids", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "plan_raid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_raid_id"], name: "index_going_to_raids_on_plan_raid_id"
+    t.index ["user_id"], name: "index_going_to_raids_on_user_id"
+  end
+
+  create_table "land_marks", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_gym"
+    t.float "lat"
+    t.float "long"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plan_raids", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "spot_raid_id"
+    t.time "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_raid_id"], name: "index_plan_raids_on_spot_raid_id"
+    t.index ["user_id"], name: "index_plan_raids_on_user_id"
+  end
+
+  create_table "poke_events", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "land_mark_id"
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["land_mark_id"], name: "index_poke_events_on_land_mark_id"
+    t.index ["user_id"], name: "index_poke_events_on_user_id"
+  end
+
+  create_table "pokemons", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spot_raids", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "land_mark_id"
+    t.integer "pokemon_id"
+    t.integer "tier"
+    t.time "remaining_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["land_mark_id"], name: "index_spot_raids_on_land_mark_id"
+    t.index ["pokemon_id"], name: "index_spot_raids_on_pokemon_id"
+    t.index ["user_id"], name: "index_spot_raids_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

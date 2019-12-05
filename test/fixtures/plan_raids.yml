@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  spot_raid: one
+  start_time: 2019-12-05 16:37:54
+
+two:
+  user: two
+  spot_raid: two
+  start_time: 2019-12-05 16:37:54

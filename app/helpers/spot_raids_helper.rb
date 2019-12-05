@@ -1,0 +1,2 @@
+module SpotRaidsHelper
+end
