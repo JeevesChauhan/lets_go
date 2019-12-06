@@ -11,8 +11,38 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <!-- Brand -->
+      <%= link_to "Home", root_path(), class: "text-white" %>
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to "Home", lets_go_home_path(@home), class: "btn btn-primary text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", lets_go_about_path(@about), class: "btn btn-primary text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", user_session_path(@user_session), class: "btn btn-primary text-white" %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <div class="bg-secondary">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>
