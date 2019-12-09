@@ -46,6 +46,10 @@
       </div>
     </nav>
 
+    <% if !user_signed_in? %>
+      <p class="text-center"> Log in, to interact </p>
+    <% end %>
+
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

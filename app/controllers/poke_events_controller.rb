@@ -14,7 +14,7 @@ class PokeEventsController < ApplicationController
 
   # GET /poke_events/new
   def new
-    @poke_event = PokeEvent.new
+    @poke_event = current_user.poke_events.build(land_mark_id: params[:land_mark_id])
   end
 
   # GET /poke_events/1/edit
@@ -24,7 +24,7 @@ class PokeEventsController < ApplicationController
   # POST /poke_events
   # POST /poke_events.json
   def create
-    @poke_event = PokeEvent.new(poke_event_params)
+    @poke_event = current_user.poke_events.build(poke_event_params)
 
     respond_to do |format|
       if @poke_event.save

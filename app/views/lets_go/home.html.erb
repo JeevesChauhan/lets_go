@@ -34,7 +34,7 @@
       });
 
       var infoWindow = new google.maps.InfoWindow({
-        content: '<h1> Hello </h1>'
+        content: '<a href=\"<%= new_poke_event_url(land_mark_id: '2') %>\">here</a>'
       });
 
       marker.addListener('click', function() {
@@ -48,5 +48,8 @@
 
 <h1>LetsGo#home</h1>
 <p>Find me in app/views/lets_go/home.html.erb</p>
+
+<!-- This is how to make only one infowindow -->
+<!-- https://stackoverflow.com/questions/1875596/have-just-one-infowindow-open-in-google-maps-api-v3 -->
 
 <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVqQXR-NMqREuqwTCTA58MmYWAa_LyOEg&callback=initMap"></script>
