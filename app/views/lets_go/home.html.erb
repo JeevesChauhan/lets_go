@@ -24,6 +24,24 @@
         <% end %>
       });
       <% end %>
+
+      var marker = new google.maps.Marker({
+        map: map,
+        position: {
+          lat: 51.243325,
+          lng: -0.589844
+        }
+      });
+
+      var infoWindow = new google.maps.InfoWindow({
+        content: '<h1> Hello </h1>'
+      });
+
+      marker.addListener('click', function() {
+          infoWindow.open(map, marker);
+        });
+
+
     }
   </script>
 </div>
