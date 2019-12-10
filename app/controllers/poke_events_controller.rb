@@ -1,5 +1,5 @@
 class PokeEventsController < ApplicationController
-  before_action :set_poke_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_poke_event, only: [:show]
 
   # GET /poke_events
   # GET /poke_events.json

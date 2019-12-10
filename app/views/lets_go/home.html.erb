@@ -28,19 +28,10 @@
       markers.push(_<%= mark.id %>);
       <% end %>
 
-      var marker = new google.maps.Marker({
-        map: map,
-        position: {
-          lat: 51.243325,
-          lng: -0.589844
-        }
-      });
-      markers.push(marker);
-
-
+      var htmlString = '<div class="container">' + '<h1 class="text-center">This is title</h1><br>' + '<p class="text-center">Content Here like lorem ipsum etc</p>' + '<a href=\"<%= new_poke_event_url(land_mark_id: '2') %>\">here</a>' + '</dvi>';
 
       <% if user_signed_in? %>
-        var stringInfo = '<a href=\"<%= new_poke_event_url(land_mark_id: '2') %>\">here</a>'
+        var stringInfo = '<div class="container"><a href=\"<%= new_poke_event_url(land_mark_id: '2') %>\">here</a></div>'
       <% else %>
         var stringInfo = '<h1> Log in bruh </h1>'
       <% end %>
@@ -50,7 +41,7 @@
 
       for (var i = 0; i < markers.length; i++) {
         google.maps.event.addListener(markers[i], 'click', function() {
-         infoWindow.setContent(stringInfo);
+         infoWindow.setContent(htmlString);
          infoWindow.open(map, this);
         });
       }

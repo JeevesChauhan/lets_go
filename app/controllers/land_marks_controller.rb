@@ -1,5 +1,5 @@
 class LandMarksController < ApplicationController
-  before_action :set_land_mark, only: [:show, :edit, :update, :destroy]
+  before_action :set_land_mark, only: [:show]
 
   # GET /land_marks
   # GET /land_marks.json

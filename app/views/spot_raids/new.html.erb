@@ -2,4 +2,29 @@
 
 <%= render 'form', spot_raid: @spot_raid %>
 
+<%= form_for(@spot_raid) do |f| %>
+  <%= f.label :Pokemon %>:<br>
+  <%= f.text_field :pokemon_id %><br>
+
+  <%= f.label(:tier, 'Tier') %>:<br>
+  <%= f.label(:tier_child, '1') %>
+  <%= f.radio_button :tier, 1 %>
+  <%= f.label(:tier_child, '2') %>
+  <%= f.radio_button :tier, 2 %>
+  <%= f.label(:tier_child, '3') %>
+  <%= f.radio_button :tier, 3 %>
+  <%= f.label(:tier_child, '4') %>
+  <%= f.radio_button :tier, 4 %>
+  <%= f.label(:tier_child, '5') %>
+  <%= f.radio_button :tier, 5 %><br>
+
+  <%= f.label :Remaining_time %>:<br>
+  <%= collection_select( :spot_raid, :pokemon_id, Pokemon.where(:is_active => "true"), :id, :name, {}, { :multiple => false}) %>
+  <br>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :land_mark_id %>
+
+  <%= f.submit 'submit raid' %>
+<% end %>
+
 <%= link_to 'Back', spot_raids_path %>

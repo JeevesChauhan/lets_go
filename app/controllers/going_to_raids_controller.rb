@@ -1,5 +1,5 @@
 class GoingToRaidsController < ApplicationController
-  before_action :set_going_to_raid, only: [:show, :edit, :update, :destroy]
+  before_action :set_going_to_raid, only: [:show, :update]
 
   # GET /going_to_raids
   # GET /going_to_raids.json
