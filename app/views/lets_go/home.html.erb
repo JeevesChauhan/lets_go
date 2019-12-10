@@ -10,6 +10,8 @@
         zoom: 17
       });
 
+      var markers = [];
+
       <% LandMark.all.each do |mark| %>
       var _<%= mark.id %> = new google.maps.Marker({
         map: map,
@@ -23,6 +25,7 @@
           <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/blue-dot.png\"}" %>
         <% end %>
       });
+      markers.push(_<%= mark.id %>);
       <% end %>
 
       var marker = new google.maps.Marker({
@@ -32,15 +35,25 @@
           lng: -0.589844
         }
       });
+      markers.push(marker);
 
-      var infoWindow = new google.maps.InfoWindow({
-        content: '<a href=\"<%= new_poke_event_url(land_mark_id: '2') %>\">here</a>'
-      });
 
-      marker.addListener('click', function() {
-          infoWindow.open(map, marker);
+
+      <% if user_signed_in? %>
+        var stringInfo = '<a href=\"<%= new_poke_event_url(land_mark_id: '2') %>\">here</a>'
+      <% else %>
+        var stringInfo = '<h1> Log in bruh </h1>'
+      <% end %>
+
+      var infoWindow = new google.maps.InfoWindow();
+
+
+      for (var i = 0; i < markers.length; i++) {
+        google.maps.event.addListener(markers[i], 'click', function() {
+         infoWindow.setContent(stringInfo);
+         infoWindow.open(map, this);
         });
-
+      }
 
     }
   </script>
