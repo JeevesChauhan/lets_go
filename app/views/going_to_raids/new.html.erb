@@ -1,4 +1,12 @@
 <h1>New Going To Raid</h1>
+<p id="notice"><%= notice %></p>
+
+
+<% if current_user.trainer == PlanRaid.find(params[:plan_raid_id]).user.trainer %>
+  <p1> You have created the raid plan. Do you also intend on going? </p1>
+<% else %>
+  <p1> Do you want to go the raid </p1>
+<% end %>
 
 <%= render 'form', going_to_raid: @going_to_raid %>
 

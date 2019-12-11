@@ -2,17 +2,17 @@
 
 <p>
   <strong>User:</strong>
-  <%= @spot_raid.user %>
+  <%= @spot_raid.user.trainer %>
 </p>
 
 <p>
   <strong>Land mark:</strong>
-  <%= @spot_raid.land_mark %>
+  <%= @spot_raid.land_mark.name %>
 </p>
 
 <p>
   <strong>Pokemon:</strong>
-  <%= @spot_raid.pokemon %>
+  <%= @spot_raid.pokemon.name %>
 </p>
 
 <p>
@@ -21,8 +21,12 @@
 </p>
 
 <p>
-  <strong>Remaining till:</strong>
-  <%= @spot_raid.remaining_time %>
+  <strong>Leaves at:</strong>
+  <%= @spot_raid.remaining_time.utc.strftime( "%H\:%M" ) %>
 </p>
+
+<%= link_to 'Create a raid plan', new_plan_raid_url(spot_raid_id: @spot_raid.id, pokemon_id: @spot_raid.pokemon_id) %>
+
+<br>
 
 <%= link_to 'Back', spot_raids_path %>

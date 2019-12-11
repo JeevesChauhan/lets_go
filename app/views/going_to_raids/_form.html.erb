@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id %>
   </div>
 
   <div class="field">
-    <%= form.label :plan_raid_id %>
-    <%= form.text_field :plan_raid_id %>
+    <%= form.hidden_field :plan_raid_id %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Go to Raid' %>
   </div>
 <% end %>

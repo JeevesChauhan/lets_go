@@ -1,5 +1,5 @@
 class SpotRaidsController < ApplicationController
-  before_action :set_spot_raid, only: [:show]
+  before_action :set_spot_raid, only: [:show, :update, :edit, :destroy]
 
   # GET /spot_raids
   # GET /spot_raids.json
@@ -24,7 +24,7 @@ class SpotRaidsController < ApplicationController
   # POST /spot_raids
   # POST /spot_raids.json
   def create
-    @spot_raid = current_user.sport_raids.build(spot_raid_params)
+    @spot_raid = current_user.spot_raids.build(spot_raid_params)
 
     respond_to do |format|
       if @spot_raid.save

@@ -1,5 +1,12 @@
-<h1>New Plan Raid</h1>
+<h1>Plan Raid for <%= Pokemon.find(params[:pokemon_id]).name %></h1>
 
-<%= render 'form', plan_raid: @plan_raid %>
+
+<%= form_for(@plan_raid) do |f| %>
+  <%= f.label :Start_time %>:<br>
+  <%= f.time_select :start_time %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :spot_raid_id %>
+  <%= f.submit 'Submit' %>
+<% end %>
 
 <%= link_to 'Back', plan_raids_path %>

@@ -1,5 +1,5 @@
 class GoingToRaidsController < ApplicationController
-  before_action :set_going_to_raid, only: [:show, :update]
+  before_action :set_going_to_raid, only: [:show, :update, :edit, :destroy]
 
   # GET /going_to_raids
   # GET /going_to_raids.json
@@ -14,7 +14,7 @@ class GoingToRaidsController < ApplicationController
 
   # GET /going_to_raids/new
   def new
-    @going_to_raid = GoingToRaid.new
+    @going_to_raid = current_user.going_to_raids.build(plan_raid_id: params[:plan_raid_id])
   end
 
   # GET /going_to_raids/1/edit
@@ -24,7 +24,7 @@ class GoingToRaidsController < ApplicationController
   # POST /going_to_raids
   # POST /going_to_raids.json
   def create
-    @going_to_raid = GoingToRaid.new(going_to_raid_params)
+    @going_to_raid = current_user.going_to_raids.build(going_to_raid_params)
 
     respond_to do |format|
       if @going_to_raid.save

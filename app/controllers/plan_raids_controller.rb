@@ -14,7 +14,7 @@ class PlanRaidsController < ApplicationController
 
   # GET /plan_raids/new
   def new
-    @plan_raid = PlanRaid.new
+    @plan_raid = current_user.plan_raids.build(spot_raid_id: params[:spot_raid_id])
   end
 
   # GET /plan_raids/1/edit
@@ -24,11 +24,11 @@ class PlanRaidsController < ApplicationController
   # POST /plan_raids
   # POST /plan_raids.json
   def create
-    @plan_raid = PlanRaid.new(plan_raid_params)
+    @plan_raid = current_user.plan_raids.build(plan_raid_params)
 
     respond_to do |format|
       if @plan_raid.save
-        format.html { redirect_to @plan_raid, notice: 'Plan raid was successfully created.' }
+        format.html { redirect_to :controller => 'going_to_raids', :action => 'new', :plan_raid_id => @plan_raid, notice: 'Created'}
         format.json { render :show, status: :created, location: @plan_raid }
       else
         format.html { render :new }
