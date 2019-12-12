@@ -10,41 +10,65 @@
         zoom: 17
       });
 
+      // These arrays are to call markers made from the ruby code
       var markers = [];
+      var contents = [];
 
       <% LandMark.all.each do |mark| %>
-      var _<%= mark.id %> = new google.maps.Marker({
+      // Making marker
+      var mark_<%= mark.id %> = new google.maps.Marker({
         map: map,
         position: {
-          lat : <%= mark.lat %>,
+          lat: <%= mark.lat %>,
           lng: <%= mark.long %>
         },
         <% if mark.is_gym %>
-          <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/red-dot.png\"}" %>
+        <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/red-dot.png\"}" %>
         <% else %>
-          <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/blue-dot.png\"}" %>
+        <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/blue-dot.png\"}" %>
         <% end %>
       });
-      markers.push(_<%= mark.id %>);
+      markers.push(mark_<%= mark.id %>);
+
+      // Making information based on the marker
+      var info_<%= mark.id %> = '<div class="container">'
+        + '<h4> <% if mark.is_gym %> Gym: <% else %> Pokestop: <% end %><%= mark.name %> </h4>'
+        + '<div></div>'
+        + '<div> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %> <%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% end %></div>'
+        + '</div>';
+      contents.push(info_<%= mark.id %>);
+
+      if (contents.length > 0) {
+        var display = contents[contents.length - 1];
+        console.log(display);
+      }
+
       <% end %>
 
-      var htmlString = '<div class="container">' + '<h1 class="text-center">This is title</h1><br>' + '<p class="text-center">Content Here like lorem ipsum etc</p>' + '<a href=\"<%= new_poke_event_url(land_mark_id: '2') %>\">here</a>' + '</dvi>';
-
-      <% if user_signed_in? %>
-        var stringInfo = '<div class="container"><a href=\"<%= new_poke_event_url(land_mark_id: '2') %>\">here</a></div>'
-      <% else %>
-        var stringInfo = '<h1> Log in bruh </h1>'
-      <% end %>
+      // This whole setup is to allow each marker display their own content but share the same infoWindow
+      // When the infoWindow is requested when its already opened someonewhere else it will close the current
+      // one and open the requested one
+      function bindInfoWindow(marker, map, infowindow, content) {
+          marker.addListener('click', function() {
+          infowindow.setContent(content);
+          infowindow.open(map, this);
+        });
+      }
 
       var infoWindow = new google.maps.InfoWindow();
 
-
       for (var i = 0; i < markers.length; i++) {
-        google.maps.event.addListener(markers[i], 'click', function() {
-         infoWindow.setContent(htmlString);
-         infoWindow.open(map, this);
-        });
+        bindInfoWindow(markers[i], map, infoWindow, contents[i]);
       }
+
+
+      // Giving all the markers the ability to open the infoWindow with their content
+      //for (var i = 0; i < markers.length; i++) {
+      //  google.maps.event.addListener(markers[i], 'click', function () {
+      //    infoWindow.setContent(contents[i - 1].toString());
+      //    infoWindow.open(map, this);
+      //  });
+      //}
 
     }
   </script>
