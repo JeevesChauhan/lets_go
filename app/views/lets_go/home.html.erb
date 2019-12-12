@@ -33,8 +33,9 @@
       // Making information based on the marker
       var info_<%= mark.id %> = '<div class="container">'
         + '<h4> <% if mark.is_gym %> Gym: <% else %> Pokestop: <% end %><%= mark.name %> </h4>'
-        + '<div></div>'
-        + '<div> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %> <%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% end %></div>'
+        + '<div style= "width: 200px; height: 200px; background-color: grey; margin: auto; margin-top: 10px; margin-bottom: 10px;"> This is where the picture will go </div>'
+        + '<div class="d-inline"> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %> <%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% end %></div>'
+        + '<div class="d-inline"> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %> <%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% end %></div>'
         + '</div>';
       contents.push(info_<%= mark.id %>);
 

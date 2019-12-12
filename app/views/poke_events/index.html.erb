@@ -15,13 +15,14 @@
 
   <tbody>
     <% @poke_events.each do |poke_event| %>
-      <tr>
-        <td><%= poke_event.user.trainer %></td>
-        <td><%= poke_event.land_mark.name %></td>
-        <td><%= poke_event.title %></td>
-        <td><%= poke_event.description %></td>
-      </tr>
-    <% end %>
+        <tr>
+          <td><%= poke_event.user.trainer %></td>
+          <td><%= poke_event.land_mark.name %></td>
+          <td><%= poke_event.title %></td>
+          <td><%= poke_event.description %></td>
+          <td><%= poke_event.created_at %></td>
+        </tr>
+      <% end %>
   </tbody>
 </table>
 

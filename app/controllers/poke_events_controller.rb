@@ -4,7 +4,7 @@ class PokeEventsController < ApplicationController
   # GET /poke_events
   # GET /poke_events.json
   def index
-    @poke_events = PokeEvent.all
+    @poke_events = PokeEvent.where("created_at >= ?", (30.minutes.ago))
   end
 
   # GET /poke_events/1
