@@ -1,3 +1,8 @@
+<%-# Storing variables to make easier to read -%>
+<% todayDate = Date.today %>
+<% todayTime = Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S")) %>
+
+
 <div id="map">
   <script>
     var map;
@@ -32,9 +37,8 @@
 
       // Making information based on the marker
       var info_<%= mark.id %> = '<div class="container">'
-        + '<h4> <% if mark.is_gym %> Gym: <% else %> Pokestop: <% end %><%= mark.name %> </h4>'
-        + '<div style= "width: 200px; height: 200px; background-color: grey; margin: auto; margin-top: 10px; margin-bottom: 10px;"> This is where the picture will go </div>'
-        + '<div class="d-inline"> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %> <%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% end %></div>'
+        + '<h4> <%= mark.name %> </h4>'
+        + '<div class = container><% SpotRaid.where("created_at >= ? and remaining_time >= ?", Date.today, Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S"))).each do |raid| %><%= raid.pokemon_id %><br><%= raid.tier %><br><%= raid.user_id %><br><%= raid.remaining_time.strftime("%H:%M") %><br><% end %></div>'
         + '<div class="d-inline"> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %> <%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% end %></div>'
         + '</div>';
       contents.push(info_<%= mark.id %>);

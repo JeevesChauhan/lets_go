@@ -4,7 +4,10 @@ class PlanRaidsController < ApplicationController
   # GET /plan_raids
   # GET /plan_raids.json
   def index
-    @plan_raids = PlanRaid.all
+    # Searching the database for plan raids that:
+      # Are on the same day
+      # Hasn't passed the start time
+    @plan_raids = PlanRaid.where("created_at >= ? and start_time >= ?", Date.today, Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S")))
   end
 
   # GET /plan_raids/1

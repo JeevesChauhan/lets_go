@@ -4,7 +4,13 @@ class SpotRaidsController < ApplicationController
   # GET /spot_raids
   # GET /spot_raids.json
   def index
-    @spot_raids = SpotRaid.all
+
+    # Searching the database for only raids spotted:
+      # On the same day
+      # Still have time remaining
+      todayDate = Date.today
+      todayTime = Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S"))
+    @spot_raids = SpotRaid.where("created_at >= ? and remaining_time >= ?", todayDate, todayTime)
   end
 
   # GET /spot_raids/1

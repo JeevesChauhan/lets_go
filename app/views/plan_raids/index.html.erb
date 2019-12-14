@@ -15,9 +15,9 @@
   <tbody>
     <% @plan_raids.each do |plan_raid| %>
       <tr>
-        <td><%= plan_raid.user %></td>
+        <td><%= plan_raid.user.trainer %></td>
         <td><%= plan_raid.spot_raid %></td>
-        <td><%= plan_raid.start_time %></td>
+        <td><%= plan_raid.start_time.strftime("%k:%M") %></td>
         <td><%= link_to 'Show', plan_raid %></td>
         <td><%= link_to 'Edit', edit_plan_raid_path(plan_raid) %></td>
         <td><%= link_to 'Destroy', plan_raid, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -16,7 +16,6 @@
 
   <tbody>
     <% @spot_raids.each do |spot_raid| %>
-      <% if spot_raid.remaining_time.utc.strftime( "%H%M%S%N" ) > Time.now.utc.strftime( "%H%M%S%N" ) && Time.now.utc.to_date >= spot_raid.created_at.utc.to_date%>
         <tr>
           <td><%= spot_raid.user.trainer %></td>
           <td><%= spot_raid.land_mark.name %></td>
@@ -26,7 +25,6 @@
           <td><%= link_to 'View', spot_raid %></td>
         </tr>
       <% end %>
-    <%end%>
   </tbody>
 
 </table>

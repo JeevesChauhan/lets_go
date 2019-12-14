@@ -4,7 +4,7 @@ class GoingToRaidsController < ApplicationController
   # GET /going_to_raids
   # GET /going_to_raids.json
   def index
-    @going_to_raids = GoingToRaid.all
+    @going_to_raids = GoingToRaid.where("created_at >= ?", Date.today)
   end
 
   # GET /going_to_raids/1

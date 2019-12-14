@@ -7,6 +7,8 @@
     <tr>
       <th>User</th>
       <th>Plan raid</th>
+      <th>Created at</th>
+      <th>Raid ends at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +16,11 @@
   <tbody>
     <% @going_to_raids.each do |going_to_raid| %>
       <tr>
-        <td><%= going_to_raid.user %></td>
+        <td><%= going_to_raid.user.trainer %></td>
         <td><%= going_to_raid.plan_raid %></td>
+        <td><%= going_to_raid.created_at %></td>
+        <% @plan_raid = PlanRaid.where("id = ?", going_to_raid.plan_raid_id).first %>
+        <td><%= @plan_raid.start_time.strftime("%H:%M") %></td>
         <td><%= link_to 'Show', going_to_raid %></td>
         <td><%= link_to 'Edit', edit_going_to_raid_path(going_to_raid) %></td>
         <td><%= link_to 'Destroy', going_to_raid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
