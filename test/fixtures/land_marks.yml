@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  is_gym: false
+  is_gym: true
   lat: 1.5
   long: 1.5
 

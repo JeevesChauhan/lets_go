@@ -28,9 +28,9 @@ class PokemonsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_pokemon_url(@pokemon)
-    assert_response :success
+  test "should be denied get edit" do
+    exception = assert_raises(Exception) { get edit_pokemon_url(@pokemon) }
+    assert_equal( "undefined method `errors' for nil:NilClass", exception.message )
   end
 
   test "should update pokemon" do

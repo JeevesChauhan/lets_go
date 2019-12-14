@@ -17,10 +17,6 @@ class PokemonsController < ApplicationController
     @pokemon = Pokemon.new
   end
 
-  # GET /pokemons/1/edit
-  def edit
-  end
-
   # POST /pokemons
   # POST /pokemons.json
   def create
@@ -48,16 +44,6 @@ class PokemonsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @pokemon.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /pokemons/1
-  # DELETE /pokemons/1.json
-  def destroy
-    @pokemon.destroy
-    respond_to do |format|
-      format.html { redirect_to pokemons_url, notice: 'Pokemon was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

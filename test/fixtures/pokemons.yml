@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  is_active: false
+  is_active: true
 
 two:
   name: MyString

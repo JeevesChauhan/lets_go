@@ -11,3 +11,9 @@ two:
   land_mark: two
   title: MyString
   description: MyText
+
+poke1:
+  user: one
+  land_mark: one
+  title: eventTitle
+  description: eventDescription

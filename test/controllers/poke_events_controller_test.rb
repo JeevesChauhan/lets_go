@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class PokeEventsControllerTest < ActionDispatch::IntegrationTest
+
   setup do
-    @poke_event = poke_events(:one)
+    @poke_event = poke_events(:poke1)
+
   end
 
   test "should get index" do
@@ -16,6 +18,8 @@ class PokeEventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create poke_event" do
+    user = User.create(:one)
+    login_as(user, :scope => :one)
     assert_difference('PokeEvent.count') do
       post poke_events_url, params: { poke_event: { description: @poke_event.description, land_mark_id: @poke_event.land_mark_id, title: @poke_event.title, user_id: @poke_event.user_id } }
     end
