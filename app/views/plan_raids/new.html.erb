@@ -1,4 +1,4 @@
-<h1>Plan Raid for <%= Pokemon.find(params[:pokemon_id]).name %></h1>
+<h1>Plan Raid for <%= Pokemon.find(SpotRaid.find(params[:spot_raid_id]).pokemon_id).name %></h1>
 
 
 <%= form_for(@plan_raid) do |f| %>
@@ -9,4 +9,4 @@
   <%= f.submit 'Submit' %>
 <% end %>
 
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', spot_raid_url(params[:spot_raid_id]) %>

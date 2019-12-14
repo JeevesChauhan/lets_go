@@ -8,21 +8,28 @@
       <th>User</th>
       <th>Spot raid</th>
       <th>Start time</th>
+      <th>Going?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @plan_raids.each do |plan_raid| %>
+    <% @going_to_raid = GoingToRaid.where("plan_raid_id = ?", plan_raid.id) %>
       <tr>
         <td><%= plan_raid.user.trainer %></td>
         <td><%= plan_raid.spot_raid %></td>
         <td><%= plan_raid.start_time.strftime("%k:%M") %></td>
-        <td><%= link_to 'Show', plan_raid %></td>
-        <td><%= link_to 'Edit', edit_plan_raid_path(plan_raid) %></td>
-        <td><%= link_to 'Destroy', plan_raid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= @going_to_raid.count %></td>
+        <% if @going_to_raid.where("user_id = ?", plan_raid.user).present? %>
+          <td><strong> You are on the list </strong></td>
+        <% else %>
+          <td><%= link_to 'Going', new_going_to_raid_url(plan_raid_id: plan_raid.id) %></td>
+        <% end %>
+        <td><%= link_to 'View going list', going_to_raids_url(plan_raid_id: plan_raid.id) %></td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
 

@@ -7,7 +7,7 @@ class PlanRaidsController < ApplicationController
     # Searching the database for plan raids that:
       # Are on the same day
       # Hasn't passed the start time
-    @plan_raids = PlanRaid.where("created_at >= ? and start_time >= ?", Date.today, Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S")))
+    @plan_raids = PlanRaid.where("created_at >= ? and start_time >= ? and spot_raid_id = ?", Date.today, Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S")), params[:spot_raid_id])
   end
 
   # GET /plan_raids/1

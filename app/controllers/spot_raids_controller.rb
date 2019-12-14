@@ -10,7 +10,7 @@ class SpotRaidsController < ApplicationController
       # Still have time remaining
       todayDate = Date.today
       todayTime = Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S"))
-    @spot_raids = SpotRaid.where("created_at >= ? and remaining_time >= ?", todayDate, todayTime)
+    @spot_raids = SpotRaid.where("created_at >= ? and remaining_time >= ? and land_mark_id = ?", todayDate, todayTime, params[:land_mark_id])
   end
 
   # GET /spot_raids/1

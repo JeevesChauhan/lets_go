@@ -25,7 +25,13 @@
   <%= @spot_raid.remaining_time.utc.strftime( "%H\:%M" ) %>
 </p>
 
-<%= link_to 'Create a raid plan', new_plan_raid_url(spot_raid_id: @spot_raid.id, pokemon_id: @spot_raid.pokemon_id) %>
+<% @plan_raid = PlanRaid.where("created_at >= ? and start_time >= ? and spot_raid_id = ?", Date.today, Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S")), params[:id]) %>
+<% if @plan_raid.blank? %>
+  <%= link_to 'No raid plans are made currently. Make your own', new_plan_raid_url(spot_raid_id: @spot_raid.id) %>
+<% else %>
+  <%= link_to 'View current raid plans', plan_raids_url(spot_raid_id: @spot_raid.id) %><br>
+  <%= link_to 'Or make your own', new_plan_raid_url(spot_raid_id: @spot_raid.id) %>
+<% end %>
 
 <br>
 

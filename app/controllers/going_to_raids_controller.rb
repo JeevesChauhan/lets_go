@@ -1,10 +1,11 @@
 class GoingToRaidsController < ApplicationController
   before_action :set_going_to_raid, only: [:show, :update, :edit, :destroy]
+  before_action :authenticate_user!
 
   # GET /going_to_raids
   # GET /going_to_raids.json
   def index
-    @going_to_raids = GoingToRaid.where("created_at >= ?", Date.today)
+    @going_to_raids = GoingToRaid.where("created_at >= ? and plan_raid_id = ?", Date.today, params[:plan_raid_id])
   end
 
   # GET /going_to_raids/1
