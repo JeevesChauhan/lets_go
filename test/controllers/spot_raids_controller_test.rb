@@ -37,12 +37,4 @@ class SpotRaidsControllerTest < ActionDispatch::IntegrationTest
     patch spot_raid_url(@spot_raid), params: { spot_raid: { land_mark_id: @spot_raid.land_mark_id, pokemon_id: @spot_raid.pokemon_id, remaining_time: @spot_raid.remaining_time, tier: @spot_raid.tier, user_id: @spot_raid.user_id } }
     assert_redirected_to spot_raid_url(@spot_raid)
   end
-
-  test "should destroy spot_raid" do
-    assert_difference('SpotRaid.count', -1) do
-      delete spot_raid_url(@spot_raid)
-    end
-
-    assert_redirected_to spot_raids_url
-  end
 end

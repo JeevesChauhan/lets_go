@@ -1,13 +1,15 @@
 require 'test_helper'
 
 class LetsGoControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   test "should get home" do
-    get lets_go_home_url
+    sign_in :bryan
+    get root_url
     assert_response :success
   end
 
   test "should get about" do
-    get lets_go_about_url
+    get about_path
     assert_response :success
   end
 

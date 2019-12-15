@@ -1,5 +1,6 @@
 class SpotRaidsController < ApplicationController
   before_action :set_spot_raid, only: [:show, :update, :edit, :destroy]
+    before_action :authenticate_user!, except: [:show]
 
   # GET /spot_raids
   # GET /spot_raids.json

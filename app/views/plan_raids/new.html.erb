@@ -1,5 +1,4 @@
-<h1>Plan Raid for <%= Pokemon.find(SpotRaid.find(params[:spot_raid_id]).pokemon_id).name %></h1>
-
+<h1>Plan Raid </h1>
 
 <%= form_for(@plan_raid) do |f| %>
   <%= f.label :Start_time %>:<br>
@@ -9,4 +8,36 @@
   <%= f.submit 'Submit' %>
 <% end %>
 
-<%= link_to 'Back', spot_raid_url(params[:spot_raid_id]) %>
+
+
+<div id="target">
+  <p> here is content </p>
+</div>
+
+<script>
+// Getting the end of the raid before
+<% @spot_raid = SpotRaid.where("id = ?", params[:spot_raid_id]).last%>
+var endTime = '<%= @spot_raid.remaining_time.strftime("%k%M") %>';
+
+$('#new_plan_raid').submit(function () {
+    // Get current time when hitting submit
+    var date = new Date();
+    var currentTime = (date.getHours()<10?'0':'') + date.getHours() + "" + (date.getMinutes()<10?'0':'') + date.getMinutes();
+    // Get the time submitted
+    var hours = $('#plan_raid_start_time_4i').val();
+    var minutes = $('#plan_raid_start_time_5i').val();
+    // Combine time
+    var submittedTime = hours + '' + minutes;
+    if (submittedTime > endTime) {
+      alert('The time entered is set after the raid ends');
+      return false;
+    } else if (submittedTime < currentTime) {
+      alert ( 'The time entered has already passed');
+      return false;
+    } else {
+      alert ('sent');
+      return true;
+    }
+});
+
+</script>

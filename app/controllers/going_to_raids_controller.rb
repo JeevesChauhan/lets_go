@@ -1,6 +1,6 @@
 class GoingToRaidsController < ApplicationController
   before_action :set_going_to_raid, only: [:show, :update, :edit, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   # GET /going_to_raids
   # GET /going_to_raids.json

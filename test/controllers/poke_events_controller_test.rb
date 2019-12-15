@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class PokeEventsControllerTest < ActionDispatch::IntegrationTest
+    #include Devise::Test::ControllerHelpers
 
   setup do
     @poke_event = poke_events(:poke1)
@@ -42,11 +43,4 @@ class PokeEventsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to poke_event_url(@poke_event)
   end
 
-  test "should destroy poke_event" do
-    assert_difference('PokeEvent.count', -1) do
-      delete poke_event_url(@poke_event)
-    end
-
-    assert_redirected_to poke_events_url
-  end
 end

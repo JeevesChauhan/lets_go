@@ -28,16 +28,6 @@ class GoingToRaidsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_going_to_raid_url(@going_to_raid)
-    assert_response :success
-  end
-
-  test "should update going_to_raid" do
-    patch going_to_raid_url(@going_to_raid), params: { going_to_raid: { plan_raid_id: @going_to_raid.plan_raid_id, user_id: @going_to_raid.user_id } }
-    assert_redirected_to going_to_raid_url(@going_to_raid)
-  end
-
   test "should destroy going_to_raid" do
     assert_difference('GoingToRaid.count', -1) do
       delete going_to_raid_url(@going_to_raid)

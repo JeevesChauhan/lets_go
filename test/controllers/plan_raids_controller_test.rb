@@ -37,12 +37,4 @@ class PlanRaidsControllerTest < ActionDispatch::IntegrationTest
     patch plan_raid_url(@plan_raid), params: { plan_raid: { spot_raid_id: @plan_raid.spot_raid_id, start_time: @plan_raid.start_time, user_id: @plan_raid.user_id } }
     assert_redirected_to plan_raid_url(@plan_raid)
   end
-
-  test "should destroy plan_raid" do
-    assert_difference('PlanRaid.count', -1) do
-      delete plan_raid_url(@plan_raid)
-    end
-
-    assert_redirected_to plan_raids_url
-  end
 end

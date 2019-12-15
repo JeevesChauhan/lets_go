@@ -1,5 +1,6 @@
 class PlanRaidsController < ApplicationController
   before_action :set_plan_raid, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:show]
 
   # GET /plan_raids
   # GET /plan_raids.json
