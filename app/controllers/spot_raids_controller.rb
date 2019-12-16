@@ -35,7 +35,7 @@ class SpotRaidsController < ApplicationController
 
     respond_to do |format|
       if @spot_raid.save
-        format.js
+        # format.js was ised for AJAX
         format.html { redirect_to @spot_raid, notice: 'Spot raid was successfully created.' }
         format.json { render :show, status: :created, location: @spot_raid }
       else

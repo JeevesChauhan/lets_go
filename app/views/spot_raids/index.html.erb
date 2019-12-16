@@ -1,34 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container py-5 text-center" id="your-container">
+  <%= image_tag("spot_raids/icon_mankey.png", :class => "py-5") %>
+  <h1>Spotted Raids</h1>
 
-<h1>Spotted Raids</h1>
-
-<table>
-  <thead>
+  <table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>User </th>
-      <th>Land mark </th>
-      <th>Pokemon </th>
-      <th>Leaves at</th>
-      <th>Tier </th>
-      <th colspan="3"></th>
+      <th scope="col">Pokemon</th>
+      <th scope="col">Tier</th>
+      <th scope="col">Leaves at</th>
+      <th scope="col">Found by</th>
+      <th scope="col">At</th>
+      <th scope="col"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @spot_raids.each do |spot_raid| %>
-        <tr>
-          <td><%= spot_raid.user.trainer %></td>
-          <td><%= spot_raid.land_mark.name %></td>
-          <td><%= spot_raid.pokemon.name %></td>
-          <td><%= spot_raid.remaining_time.strftime("%H%M") %></td>
-          <td><%= spot_raid.tier %></td>
-          <td><%= link_to 'View', spot_raid%></td>
-        </tr>
-      <% end %>
-  </tbody>
 
+  <% @spot_raids.each do |spot_raid| %>
+
+
+
+    <tr>
+      <td><%= spot_raid.pokemon.name %></td>
+      <td><%= spot_raid.tier %></td>
+      <td><%= spot_raid.remaining_time.strftime("%H%M") %></td>
+      <td><%= spot_raid.user.trainer %></td>
+      <td><%= spot_raid.land_mark.name %></td>
+      <td><%= link_to 'View', spot_raid, :class => "btn btn-link btn-primary text-white"%></td>
+    </tr>
+
+    <% end %>
+  </tbody>
 </table>
 
-<br>
+    <br>
 
-<%= link_to 'Back', root_path %>
+    <%= link_to 'Back', root_path %>
+  </div>

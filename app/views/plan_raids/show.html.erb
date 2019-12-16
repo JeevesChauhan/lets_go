@@ -1,21 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="container py-5 text-center">
 
-<p>
-  <strong>User:</strong>
-  <%= @plan_raid.user %>
-</p>
+  <p>
+    <strong>User:</strong>
+    <%= @plan_raid.user %>
+  </p>
 
-<p>
-  <strong>Spot raid:</strong>
-  <%= @plan_raid.spot_raid %>
-</p>
+  <p>
+    <strong>Spot raid:</strong>
+    <%= @plan_raid.spot_raid %>
+  </p>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @plan_raid.start_time %>
-</p>
+  <p>
+    <strong>Start time:</strong>
+    <%= @plan_raid.start_time %>
+  </p>
 
-<%= link_to 'go to raid', %>
+  <%= link_to 'go to raid', %>
 
-<%= link_to 'Edit', edit_plan_raid_path(@plan_raid) %> |
-<%= link_to 'Back', root_path %>
+  <%= link_to 'Edit', edit_plan_raid_path(@plan_raid) %> |
+  <%= link_to 'Back', root_path %>
+
+</div>

@@ -1,0 +1,28 @@
+<h1 class="text-center">
+  Contact
+</h1>
+
+<div class="container p-5">
+  <%= form_tag request_contact_path, method: 'post' do %>
+  <div class="d-block-m-1">
+    <%= label_tag :name %><br>
+    <%= text_field_tag :name, '', title: 'enter name', size: 50 %>
+  </div>
+
+  <div class="d-block-m-1">
+    <%= label_tag :email %><br>
+    <%= email_field_tag :email, '', title: 'enter email' %>
+  </div>
+  <div class="d-block-m-1">
+    <%= label_tag :telephone %><br>
+    <%= telephone_field_tag :telephone, '', title: 'enter telephone' %>
+  </div>
+  <div class="d-block-m-1">
+    <%= label_tag :message %><br>
+    <%= text_field_tag :message, '', title: 'enter message', size: 100 %>
+  </div>
+  <div class="p-5">
+    <%= submit_tag 'submit' %>
+  </div>
+<% end %>
+</div>

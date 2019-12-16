@@ -20,5 +20,8 @@ Rails.application.routes.draw do
   # Looks more appealing that 'lets_go/about'
   get '/about', to: 'lets_go#about'
 
+  get '/contact', to: 'lets_go#contact'
+  post 'request_contact', to: 'lets_go#request_contact'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
