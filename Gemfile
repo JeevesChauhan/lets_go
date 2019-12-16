@@ -6,6 +6,9 @@ ruby '2.6.3'
 # Devise
 gem 'devise'
 
+# Mailer
+gem 'rails-controller-testing'
+
 # Bootstrap
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'

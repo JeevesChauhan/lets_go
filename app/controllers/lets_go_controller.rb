@@ -15,10 +15,11 @@ class LetsGoController < ApplicationController
     message = params[:message]
 
     if email.blank?
-      flash[:alert] = I18n.('You must give an email address')
+      flash[:alert] = 'You must give an email address'
     else
       # Send an email
-      flash[:notice] = I18n.('Contact message sent')
+      ContactMailer.contact_email(email,name,telephone,message).deliver_now
+      flash[:notice] = 'Contact message sent'
     end
 
     redirect_to root_path
