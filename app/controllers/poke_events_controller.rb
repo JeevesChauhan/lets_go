@@ -5,7 +5,7 @@ class PokeEventsController < ApplicationController
   # GET /poke_events
   # GET /poke_events.json
   def index
-    @poke_events = PokeEvent.where("created_at >= ?", (30.minutes.ago))
+    @poke_events = PokeEvent.where("created_at >= ? and land_mark_id = ?", (30.minutes.ago), params[:land_mark_id])
   end
 
   # GET /poke_events/1

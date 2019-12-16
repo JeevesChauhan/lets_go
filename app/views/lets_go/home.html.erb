@@ -14,7 +14,9 @@
           lat: 51.243325,
           lng: -0.589844
         },
-        zoom: 17
+        zoom: 17,
+        // Found in coffeescript files
+        styles: mapStyle
       });
 
       // These arrays are to call markers made from the ruby code
@@ -31,9 +33,9 @@
         },
         // Determines What Icon to display
         <% if mark.is_gym %>
-        <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/red-dot.png\"}" %>
+        icon: '<%= image_path('map/marker_gym.png') %>'
         <% else %>
-        <%= raw "icon\: {url\: \"http://maps.google.com/mapfiles/ms/icons/blue-dot.png\"}" %>
+        icon: '<%= image_path('map/marker_poke_stop.png') %>'
         <% end %>
       });
       markers.push(mark_<%= mark.id %>);
@@ -65,8 +67,8 @@
         + '<div class=\"container\" style=\"margin-top: 10px; margin-bottom: 10px\">'
         + '<%= raw content %>'
         + '</div>'
-        + '<div class="d-inline"> <% if mark.is_gym %> <%= link_to 'View Spotted Raids', spot_raids_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %> <%= link_to 'View Poke events', poke_events_url(), class: 'btn btn-primary linky' %> <% end %></div>'
-        + '<div class="d-inline"> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %> <%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% end %></div>'
+        + '<div> <% if mark.is_gym %> <%= link_to 'View Spotted Raids', spot_raids_url(land_mark_id: mark.id), class: 'btn btn-primary linky d-inline' %><% end %></div>'
+        + '<div> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky d-inline' %> <% else %><div class="text-center py-2"><%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %></div> <% end %></div>'
         + '</div>';
       contents.push(info_<%= mark.id %>);
 
@@ -90,14 +92,10 @@
         bindInfoWindow(markers[i], map, infoWindow, contents[i]);
       }
 
+
+
     }
   </script>
 </div>
-
-<h1>LetsGo#home</h1>
-<p>Find me in app/views/lets_go/home.html.erb</p>
-
-<!-- This is how to make only one infowindow -->
-<!-- https://stackoverflow.com/questions/1875596/have-just-one-infowindow-open-in-google-maps-api-v3 -->
 
 <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVqQXR-NMqREuqwTCTA58MmYWAa_LyOEg&callback=initMap"></script>

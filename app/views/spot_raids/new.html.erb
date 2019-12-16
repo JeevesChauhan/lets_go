@@ -1,31 +1,53 @@
-<h1>New Spot Raid</h1>
+<div class="container py-5 text-center">
+  <h1>New Spot Raid</h1>
 
-<%= form_for(@spot_raid) do |f| %>
+  <%= form_for(@spot_raid) do |f| %>
 
-  <%= f.label :Pokemon %>:<br>
-  <%= collection_select( :spot_raid, :pokemon_id, Pokemon.where(:is_active => "true"), :id, :name, {}, { :multiple => false}) %><br>
+    <%= f.label :Pokemon %>:<br>
+    <%= collection_select( :spot_raid, :pokemon_id, Pokemon.where(:is_active => "true"), :id, :name, {}, { :multiple => false}) %><br>
 
-  <%= f.label(:tier, 'Tier') %>:<br>
-  <%= f.label(:tier_child, '1') %>
-  <%= f.radio_button :tier, 1 %>
-  <%= f.label(:tier_child, '2') %>
-  <%= f.radio_button :tier, 2 %>
-  <%= f.label(:tier_child, '3') %>
-  <%= f.radio_button :tier, 3 %>
-  <%= f.label(:tier_child, '4') %>
-  <%= f.radio_button :tier, 4 %>
-  <%= f.label(:tier_child, '5') %>
-  <%= f.radio_button :tier, 5 %><br>
+    <%= f.label(:tier, 'Tier') %>:<br>
+    <%= f.label(:tier_child, '1') %>
+    <%= f.radio_button :tier, 1 %>
+    <%= f.label(:tier_child, '2') %>
+    <%= f.radio_button :tier, 2 %>
+    <%= f.label(:tier_child, '3') %>
+    <%= f.radio_button :tier, 3 %>
+    <%= f.label(:tier_child, '4') %>
+    <%= f.radio_button :tier, 4 %>
+    <%= f.label(:tier_child, '5') %>
+    <%= f.radio_button :tier, 5 %><br>
 
-  <%= f.label :Time_remaining %>:<br>
-  <%= f.time_select :remaining_time %>
+    <%= f.label :Time_remaining %>:<br>
+    <%= f.time_select :remaining_time %>
 
-  <%= f.hidden_field :user_id %>
-  <%= f.hidden_field :land_mark_id %>
-
-  <div class="m-5">
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :land_mark_id %>
+    <br>
     <%= f.submit 'submit raid' %>
-  </div>
-<% end %>
+  <% end %>
 
-<%= link_to 'Back', root_path %>
+  <%= link_to 'Back', root_path %>
+</div>
+
+<script>
+
+$('#new_spot_raid').submit(function () {
+    // Get current time when hitting submit
+    var date = new Date();
+    var currentTime = (date.getHours()<10?'0':'') + date.getHours() + "" + (date.getMinutes()<10?'0':'') + date.getMinutes();
+    // Get the time submitted
+    var hours = $('#spot_raid_remaining_time_4i').val();
+    var minutes = $('#spot_raid_remaining_time_5i').val();
+    // Combine time
+    var submittedTime = hours + '' + minutes;
+     if (submittedTime < currentTime) {
+      alert ( 'The time entered has already passed');
+      return false;
+    } else {
+      alert ('sent');
+      return true;
+    }
+});
+
+</script>

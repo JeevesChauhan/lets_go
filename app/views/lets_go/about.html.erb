@@ -1,2 +1,65 @@
-<h1>LetsGo#about</h1>
-<p>Find me in app/views/lets_go/about.html.erb</p>
+<div class="container text-center py-5">
+  <h1 class="py-5">Welcome to Let's Go: Surrey University Campus edition</h1>
+
+  <h2 class="py-5"><strong> Why make this? </strong></h2>
+
+  <div class="row">
+    <div class="col-sm">
+      <%= image_tag("about/icon_phone.png", :class => "py-5") %>
+    </div>
+    <div class="col-sm my-auto py-2">
+      <p> We are limited to only being able to view Pokestops and Gyms around us. This means that we don't know what is happening just outside of our games sight, resulting in missing out on events that we could have reached on time if we knew about them. </p>
+    </div>
+  </div>
+  <div class="row container">
+    <div class="col-sm my-auto py-2">
+      <%= image_tag("about/icon_meowth.png", :class => "py-5") %>
+
+    </div>
+    <div class="col-sm my-auto">
+      <p>  Our best attempt at extending our vision is through social media sites such as Facebook or Discord where users can relay events happening around them in the chat. However, using chat rooms makes it easy for relevant information to be lost underneath other users discussing other topics. </p>
+    </div>
+  </div>
+  <div class="row container">
+    <div class="col-sm my-auto py-2">
+      <%= image_tag("icon_logo.png", :class => "py-5") %>
+    </div>
+    <div class="col-sm my-auto">
+      <p> This is a fundamental flaw using social media sites, as they were not designed with Pokemon Go in mind. Thats where <em>Let's go</em> comes in. <em>Let's go</em> is purely for highlighting events going on, which it achieves through the user of the google maps api and interactive markers. Keep the discussions in the chat rooms, put events on here.</p>
+    </div>
+  </div>
+
+  <h2 class="py-5"><strong> How it works? </strong></h2>
+
+  <div class="row container">
+    <div class="col-sm my-auto py-2">
+      <p> This marker on the map is a <strong> Pokestop </strong>. There are many types of events that could occur on these such as <strong>Finding a rare pokemon nearby</strong>, <strong>A Team Rocket event</strong>, <strong>Gives out a certain quest</strong>, <strong>etc...</strong> </p>
+      <p> Mulitple events could occur on this marker type, so Trainers can type the event into the title field and add a description if needed. Multiple events can be happening at the same time at the same Pokestop</p>
+      <p><strong> Events are automatically removed after 30 minutes being published </strong></p>
+    </div>
+    <div class="col-sm my-auto">
+      <%= image_tag("poke_events/icon_poke_stop.png", :class => "py-5") %>
+    </div>
+  </div>
+  <div class="row container">
+    <div class="col-sm my-auto py-2">
+      <p> This marker on the map is a <strong> Gym </strong>. This marker is reserved only for <strong> Spotting raids </strong> and <strong> Making raid plans for the spotted raids </strong>.</p>
+      <p> Trainers who spot a raid pokemon on a gym can highlight this for other trainers, who then can create a raid plan if they want to attend the event.</p>
+      <p> Raid plans require a <strong> spotted raid </strong> to base it on and a <strong> start time</strong> to let others know when to be there. There can be mulitiple raid plans for the same spotted raid</p>
+      <p> <strong>Gyms can have more than 1 spotted raid at the same time, this is not possible for the actual game however, some spotted raids may just be wrong so users can determine which spotted raid is the correct one by determining if Trainer who spotted it is reliable</strong> </p>
+    </div>
+    <div class="col-sm my-auto py-2">
+      <%= image_tag("about/icon_gym.png", :class => "py-5") %>
+    </div>
+  </div>
+
+  <h2 class="py-5"><strong> Future prospects? </strong></h2>
+
+  <p class="my-auto py-2"> Unfortunately this webiste, if anything, is more like a prototype. There are many features that should be included such as trainer reliabiilty scores and a function that dynamically loads markers depending on where the user has moved their map</p>
+  <p class="my-auto py-2"> However, this site proves that not only a concept like this a possible. It is also <em> very </em> useful tool that can be used by actual players.</p>
+
+  <h2 class="pt-5"><strong> Resources </strong></h2>
+  <p class="my-auto">Graphics: <a href="https://artage.io/en/icon-packs/pokemon-go-icons-pack-1">ArtAge</a></p>
+  <p class="my-auto">Map Style: <a href="https://snazzymaps.com/style/69155/pokemon-go">SnazzyMaps</a></p>
+
+</div>

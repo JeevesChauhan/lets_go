@@ -1,20 +1,25 @@
-<div class="container justify-contents-center">
-  <h1>
+<div class="container py-5">
+  <h1 class="text-center">
     <strong>
       <%= @poke_event.title %>
     </strong>
   </h1>
-  <p>
+
+  <p class="p-5" id="desc">
     <%= @poke_event.description %>
   </p>
-  <p>
-    <strong>User:</strong>
-    <%= @poke_event.user.trainer %>
-  </p>
 
-  <p >
-    <strong>Land mark:</strong>
-    <%= @poke_event.land_mark.name %>
-  </p>
-  <%= link_to 'Back', root_path %>
+  <div class="row text-center">
+    <p class="col-sm m-1" id="texty">
+      <strong>Made by:</strong>
+      <%= @poke_event.user.trainer %>
+    </p>
+    <p class="col-sm m-1" id="texty">
+      <strong>At:</strong>
+      <%= @poke_event.land_mark.name %>
+    </p>
+    <div class="col-sm m-1" id="texty">
+      <%= link_to 'Back', root_path%>
+    </div>
+  </div>
 </div>
