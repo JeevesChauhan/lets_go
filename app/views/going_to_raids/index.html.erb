@@ -1,31 +1,31 @@
 <div class="container py-5 text-center" id="your-container">
   <%= image_tag("going_to_raid/icon_feet.png", :class => "py-5") %>
 
+  <% @plan_raid = PlanRaid.where("id = ?", params[:plan_raid_id]).last %>
+  <% @spot_raid = SpotRaid.where("id = ?", @plan_raid.spot_raid_id).last %>
+  <% @pokemon = Pokemon.where("id = ?", @spot_raid.pokemon_id).last %>
+  <% @land_mark = LandMark.where("id = ?", @spot_raid.land_mark_id).last %>
 
-<h1>Going To Raids</h1>
+<h1>Going To Raid</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Plan raid</th>
-      <th>Created at</th>
-      <th>Raid ends at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class="table">
+<thead class="thead-dark">
+  <tr>
+    <th scope="col">Trainer</th>
+  </tr>
+</thead>
+<tbody>
 
   <tbody>
     <% @going_to_raids.each do |going_to_raid| %>
       <tr>
-        <td><%= going_to_raid.user.trainer %></td>
-        <td><%= going_to_raid.plan_raid %></td>
-        <td><%= going_to_raid.created_at %></td>
-        <% @plan_raid = PlanRaid.where("id = ?", going_to_raid.plan_raid_id).first %>
-        <td><%= @plan_raid.start_time.strftime("%H:%M") %></td>
+        <td>
         <% if current_user == going_to_raid.user %>
-          <td><%= link_to 'Leave list', going_to_raid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <h4><strong> You </strong</h4><br><%= link_to 'Leave list', going_to_raid, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-link btn-primary text-white" %>
+        <% else %>
+        <h4><%= going_to_raid.user.trainer %><h4>
         <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -33,5 +33,5 @@
 
 <br>
 
-<%= link_to 'Back to home', root_path %>
+<%= link_to 'Back to home', root_path, :class => "btn btn-link btn-danger text-white"  %>
 </div>

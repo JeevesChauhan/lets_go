@@ -47,7 +47,7 @@
             <% content = "<p> No raids spotted here. Did you spot one? Add it! </p>" %>
           <% else %>
             <% @spot_raid.each do | spot | %>
-              <% content = "<p> level #{spot.tier} #{Pokemon.where("id = ?", spot.pokemon_id).last.name} raid ending at: #{spot.remaining_time.strftime("%k:%M")} #{link_to 'View Raid', spot_raid_url(spot.id)} </p><br>" %>
+              <% content = "<p> level #{spot.tier} #{Pokemon.where("id = ?", spot.pokemon_id).last.name} raid ending at: #{spot.remaining_time.strftime("%k:%M")} #{link_to 'View Raid', spot_raid_url(spot.id), :class => "btn btn-link btn-primary text-white"} </p><br>" %>
             <% end %>
           <% end %>
       <% else %>
@@ -56,7 +56,7 @@
           <% content = "<p> No events found </p>"%>
         <% else %>
           <% @poke_event.each do | event | %>
-            <% content = "<p> <strong>#{event.title}</strong> by #{User.where("id = ?", event.user_id).last.trainer} #{link_to 'View', poke_event_url(event.id)} </p><br>" %>
+            <% content = "<p> <strong>#{event.title}</strong> by #{User.where("id = ?", event.user_id).last.trainer} #{link_to 'View', poke_event_url(event.id), :class => "btn btn-link btn-primary text-white"} </p><br>" %>
           <% end %>
         <% end %>
       <% end %>

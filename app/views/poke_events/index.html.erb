@@ -20,7 +20,7 @@
         <td><%= poke_event.land_mark.name %></td>
         <td><%= poke_event.title %></td>
         <td><%= poke_event.description %></td>
-        <td><%= link_to 'view', poke_event %></td>
+        <td><%= link_to 'view', poke_event, :class => "btn btn-link btn-primary text-white" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path, :class => "btn btn-link btn-danger text-white" %>

@@ -44,11 +44,11 @@
   <%= f.hidden_field :land_mark_id %>
   <br>
   <div class="m-2">
-  <%= f.submit 'submit raid' %>
+  <%= f.submit 'submit raid', :class => "btn btn-link btn-primary text-white" %>
   </div>
 <% end %>
 
-<%= link_to 'Back', root_path %> <br>
+<%= link_to 'Back', root_path, :class => "btn btn-link btn-danger text-white" %> <br>
 
 <p id="place_partial_here" class="place_partial_here"></p>
 </div>

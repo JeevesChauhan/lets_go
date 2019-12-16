@@ -6,8 +6,11 @@
     <%= f.time_select :start_time %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :spot_raid_id %>
-    <%= f.submit 'Submit' %>
+    <%= f.submit 'Submit', :class => "btn btn-link btn-primary text-white" %>
   <% end %>
+
+
+<%= link_to 'Back', root_path, :class => "btn btn-link btn-danger text-white m-5" %>
 </div>
 
 <script>

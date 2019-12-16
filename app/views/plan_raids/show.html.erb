@@ -15,9 +15,9 @@
     <%= @plan_raid.start_time %>
   </p>
 
-  <%= link_to 'go to raid' %>
+  <%= link_to 'go to raid', :class => "btn btn-link btn-primary text-white" %>
 
-  <%= link_to 'Edit', edit_plan_raid_path(@plan_raid) %> |
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Edit', edit_plan_raid_path(@plan_raid), :class => "btn btn-link btn-primary text-white %>
+  <%= link_to 'Back', root_path, :class => "btn btn-link btn-danger text-white m-5" %>
 
 </div>

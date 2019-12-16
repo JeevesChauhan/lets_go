@@ -10,9 +10,9 @@
   <%= f.text_area :description %><br>
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :land_mark_id %>
-  <%= f.submit 'Submit' %>
+  <%= f.submit 'Submit', :class => "btn btn-link btn-primary text-white" %>
 <% end %>
 
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path, :class => "btn btn-link btn-danger text-white m-4" %>
 
 </div>

@@ -6,8 +6,6 @@
   <% @land_mark = LandMark.where("id = ?", @spot_raid.land_mark_id).last %>
   <h1>Plan Raids for <%= @pokemon.name %> at <%= @land_mark.name %></h1>
 
-  <%=  %>
-
   <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -27,10 +25,10 @@
           <td><%= plan_raid.user.trainer %></td>
           <td><%= plan_raid.start_time.strftime("%k:%M") %></td>
           <td><%= @going_to_raid.count %></td>
-          <% if @going_to_raid.where("user_id = ?", plan_raid.user_id).present? %>
+          <% if @going_to_raid.where("user_id = ?", current_user).present?  %>
             <td><strong> You are on the list </strong></td>
           <% else %>
-            <td><%= link_to 'Going', new_going_to_raid_url(plan_raid_id: plan_raid.id) %></td>
+            <td><%= link_to 'Going', new_going_to_raid_url(plan_raid_id: plan_raid.id), :class => "btn btn-link btn-primary text-white" %></td>
           <% end %>
           <td><%= link_to 'View going list', going_to_raids_url(plan_raid_id: plan_raid.id), :class => "btn btn-link btn-primary text-white" %></td>
         </tr>
@@ -41,5 +39,5 @@
 
   <br>
 
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Back', root_path, :class => "btn btn-link btn-primary text-white"  %>
 </div>

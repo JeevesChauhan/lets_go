@@ -33,14 +33,13 @@
 
     <% @plan_raid = PlanRaid.where("created_at >= ? and start_time >= ? and spot_raid_id = ?", Date.today, Time.new(2000, 1, 1, Time.now.strftime("%k"), Time.now.strftime("%M"), Time.now.strftime("%S")), params[:id]) %>
       <% if @plan_raid.blank? %>
-        <%= link_to 'No raid plans are made currently. Make your own', new_plan_raid_url(spot_raid_id: @spot_raid.id) %>
+        <%= link_to 'No raid plans are made currently. Make your own', new_plan_raid_url(spot_raid_id: @spot_raid.id), :class => "btn btn-link btn-primary text-white" %>
       <% else %>
-        <%= link_to 'View current raid plans', plan_raids_url(spot_raid_id: @spot_raid.id) %><br>
-        <%= link_to 'Or make your own', new_plan_raid_url(spot_raid_id: @spot_raid.id) %>
+        <%= link_to 'View current raid plans', plan_raids_url(spot_raid_id: @spot_raid.id), :class => "btn btn-link btn-primary text-white m-4" %><br>
+        <%= link_to 'Or make your own', new_plan_raid_url(spot_raid_id: @spot_raid.id), :class => "btn btn-link btn-primary text-white" %>
       <% end %>
-
-      <br>
-
-      <%= link_to 'Back', root_path %>
     </div>
+
+    <%= link_to 'Back', root_path, :class => "btn btn-link btn-danger text-white" %>
+
   </div>
