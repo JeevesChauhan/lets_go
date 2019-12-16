@@ -21,7 +21,7 @@ class SpotRaidsController < ApplicationController
 
   # GET /spot_raids/new
   def new
-    @spot_raid = current_user.spot_raids.build(land_mark_id: params[:land_mark_id])
+    @spot_raid = current_user.spot_raids.build(land_mark_id: params[:land_mark_id], pokemon_id: params[:pokemon_id])
   end
 
   # GET /spot_raids/1/edit
@@ -35,6 +35,7 @@ class SpotRaidsController < ApplicationController
 
     respond_to do |format|
       if @spot_raid.save
+        format.js
         format.html { redirect_to @spot_raid, notice: 'Spot raid was successfully created.' }
         format.json { render :show, status: :created, location: @spot_raid }
       else

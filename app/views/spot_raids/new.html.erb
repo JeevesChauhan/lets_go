@@ -1,53 +1,105 @@
-<div class="container py-5 text-center">
+<div class="container py-5 text-center" id="your-container">
   <h1>New Spot Raid</h1>
 
   <%= form_for(@spot_raid) do |f| %>
 
+  <div class="p-3">
     <%= f.label :Pokemon %>:<br>
     <%= collection_select( :spot_raid, :pokemon_id, Pokemon.where(:is_active => "true"), :id, :name, {}, { :multiple => false}) %><br>
-
+  </div>
+  <div class="pt-2">
     <%= f.label(:tier, 'Tier') %>:<br>
-    <%= f.label(:tier_child, '1') %>
-    <%= f.radio_button :tier, 1 %>
-    <%= f.label(:tier_child, '2') %>
-    <%= f.radio_button :tier, 2 %>
-    <%= f.label(:tier_child, '3') %>
-    <%= f.radio_button :tier, 3 %>
-    <%= f.label(:tier_child, '4') %>
-    <%= f.radio_button :tier, 4 %>
-    <%= f.label(:tier_child, '5') %>
-    <%= f.radio_button :tier, 5 %><br>
+    <div class="mx-2 d-inline">
+      <%= f.label(:tier_child, '1') %>
+      <%= f.radio_button :tier, 1 %>
+    </div>
 
-    <%= f.label :Time_remaining %>:<br>
+    <div class="mx-2 d-inline">
+      <%= f.label(:tier_child, '2') %>
+      <%= f.radio_button :tier, 2 %>
+    </div>
+
+    <div class="mx-2 d-inline">
+      <%= f.label(:tier_child, '3') %>
+      <%= f.radio_button :tier, 3 %>
+    </div>
+
+    <div class="mx-2 d-inline">
+      <%= f.label(:tier_child, '4') %>
+      <%= f.radio_button :tier, 4 %>
+    </div>
+
+    <div class="mx-2 d-inline">
+      <%= f.label(:tier_child, '5') %>
+      <%= f.radio_button :tier, 5 %><br>
+    </div>
+  </div>
+
+  <div class="pb-3">
+    <%= f.label :Leaving_at %>:<br>
     <%= f.time_select :remaining_time %>
+  </div>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :land_mark_id %>
+  <br>
+  <div class="m-2">
+  <%= f.submit 'submit raid' %>
+  </div>
+<% end %>
 
-    <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :land_mark_id %>
-    <br>
-    <%= f.submit 'submit raid' %>
-  <% end %>
+<%= link_to 'Back', root_path %> <br>
 
-  <%= link_to 'Back', root_path %>
+<p id="place_partial_here" class="place_partial_here"></p>
 </div>
 
 <script>
 
-$('#new_spot_raid').submit(function () {
-    // Get current time when hitting submit
-    var date = new Date();
-    var currentTime = (date.getHours()<10?'0':'') + date.getHours() + "" + (date.getMinutes()<10?'0':'') + date.getMinutes();
-    // Get the time submitted
-    var hours = $('#spot_raid_remaining_time_4i').val();
-    var minutes = $('#spot_raid_remaining_time_5i').val();
-    // Combine time
-    var submittedTime = hours + '' + minutes;
-     if (submittedTime < currentTime) {
-      alert ( 'The time entered has already passed');
-      return false;
-    } else {
-      alert ('sent');
-      return true;
-    }
-});
+  var land_mark_id = $('#spot_raid_land_mark_id').val();
 
+// My attempt at AJAX. I could not find out how to change an image being displayed whenever the user selected from a drop down.
+// Changes image of pokemon depending on what pokemon has been selected
+//$(document).ready(function(){
+//  $("#spot_raid_pokemon_id").change(function () {
+//        var pokemon_id = $('#spot_raid_pokemon_id :selected').val();
+//        console.log(pokemon_id);
+//        $.ajax({
+//              url : "/spot_raids/new",
+//              data : {land_mark_id: land_mark_id, pokemon_id: pokemon_id},
+//              async: true,
+//              success: function(response){
+//                console.log(response);
+//                $('#place_partial_here').html(response);
+//              }
+//          });
+//    });
+//});
+
+
+
+
+$('#new_spot_raid').submit(function () {
+  // Get current time when hitting submit
+  var date = new Date();
+  var currentTime = (
+    date.getHours() < 10
+      ? '0'
+      : ''
+  ) + date.getHours() + "" + (
+    date.getMinutes() < 10
+      ? '0'
+      : ''
+  ) + date.getMinutes();
+  // Get the time submitted
+  var hours = $('#spot_raid_remaining_time_4i').val();
+  var minutes = $('#spot_raid_remaining_time_5i').val();
+  // Combine time
+  var submittedTime = hours + '' + minutes;
+  if (submittedTime < currentTime) {
+    alert('The time entered has already passed');
+    return false;
+  } else {
+    alert('sent');
+    return true;
+  }
+});
 </script>
