@@ -67,8 +67,8 @@
         + '<div class=\"container\" style=\"margin-top: 10px; margin-bottom: 10px\">'
         + '<%= raw content %>'
         + '</div>'
-        + '<div> <% if mark.is_gym %> <%= link_to 'View Spotted Raids', spot_raids_url(land_mark_id: mark.id), class: 'btn btn-primary linky d-inline' %><% end %></div>'
-        + '<div> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky d-inline' %> <% else %><div class="text-center py-2"><%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %></div> <% end %></div>'
+        + '<div class="text-center"> <% if mark.is_gym %> <%= link_to 'View Spotted Raids', spot_raids_url(land_mark_id: mark.id), class: 'btn btn-primary linky mb-3' %><% end %></div>'
+        + '<div class= "text-center"> <% if mark.is_gym %> <%= link_to 'Found Raid', new_spot_raid_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %> <% else %><div class="text-center py-2"><%= link_to 'Found Poke event', new_poke_event_url(land_mark_id: mark.id), class: 'btn btn-primary linky' %></div> <% end %></div>'
         + '</div>';
       contents.push(info_<%= mark.id %>);
 

@@ -30,4 +30,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app_title: Lets Go
+  log_in_msg: Log in to interact
+
+  lets_go:
+      home:
+      about:
+        title_welcome: "Welcome to Let's go : Surrey University Edition!"
+        title_why: "Why make this?"
+        title_how:  "How it works?"
+        title_future:  "Future prospects?"
+        title_resources: "Resources"
+      contact:

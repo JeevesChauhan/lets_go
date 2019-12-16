@@ -18,7 +18,7 @@
 
       <div id="logo">
         <%= image_tag("icon_logo.png", :size => "50x50") %>
-        <strong>Lets Go</strong>
+        <strong><%= t('app_title') %></strong>
         <% if user_signed_in? %>
           <p class="ml-1 text-secondary d-inline" id="user_logo_name"> <%= current_user.trainer%></p>
         <% end %>
@@ -53,7 +53,7 @@
     </nav>
 
     <% if !user_signed_in? %>
-      <p class="text-center bg-danger"> Log in, to interact </p>
+      <p class="text-center bg-danger"> <%=t('log_in_msg')%> </p>
     <% end %>
 
     <%= yield %>
