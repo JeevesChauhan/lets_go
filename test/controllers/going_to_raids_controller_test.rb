@@ -5,34 +5,28 @@ class GoingToRaidsControllerTest < ActionDispatch::IntegrationTest
     @going_to_raid = going_to_raids(:one)
   end
 
-  test "should get index" do
+  test "no user should get redirected from index" do
     get going_to_raids_url
-    assert_response :success
+    assert_redirected_to new_user_session_url
   end
 
-  test "should get new" do
+  test "no user should get redirected from new" do
     get new_going_to_raid_url
-    assert_response :success
+    assert_redirected_to new_user_session_url
   end
 
-  test "should create going_to_raid" do
-    assert_difference('GoingToRaid.count') do
-      post going_to_raids_url, params: { going_to_raid: { plan_raid_id: @going_to_raid.plan_raid_id, user_id: @going_to_raid.user_id } }
-    end
-
-    assert_redirected_to going_to_raid_url(GoingToRaid.last)
+  test "no user should get redirected from create going_to_raid" do
+    post going_to_raids_url, params: { going_to_raid: { plan_raid_id: @going_to_raid.plan_raid_id, user_id: @going_to_raid.user_id } }
+    assert_redirected_to new_user_session_url
   end
 
-  test "should show going_to_raid" do
+  test "no user should show going_to_raid" do
     get going_to_raid_url(@going_to_raid)
     assert_response :success
   end
 
-  test "should destroy going_to_raid" do
-    assert_difference('GoingToRaid.count', -1) do
-      delete going_to_raid_url(@going_to_raid)
-    end
-
-    assert_redirected_to going_to_raids_url
+  test "no user should get redirected from destroy going_to_raid" do
+    delete going_to_raid_url(@going_to_raid)
+    assert_redirected_to new_user_session_url
   end
 end
