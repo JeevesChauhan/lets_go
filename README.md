@@ -1,24 +1,13 @@
-# README
+![Logo](https://github.com/JeevesChauhan/lets_go/blob/master/app/assets/images/icon_logo.png)
+# Lets Go
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A website to allow Pokemon Go users to orgnaise raids together with each other, as well as highlighting poke events. This sites gives the users an easy-to-use website using the google maps api. 
 
-Things you may want to cover:
+## Version
+- Ruby 2.6
+- Rails 5.2
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## The Run down
+### Inital look
+### Gyms
+### Pokestops
