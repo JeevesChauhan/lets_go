@@ -14,14 +14,18 @@ The user is shown the home page, which is where the map is, so that they can als
 
 ### Gyms
 The gym marker is where users can spot raids and create raid plans for them. If there are no spotted raids then marker will only give the option the create a spotted raid.
+
 ![Gym no raids](https://github.com/JeevesChauhan/lets_go/blob/master/screenshots/ss_gym_empty.png)
 
 If there is a spotted raid on the marker then it will display the gym in which users can view in more depth and create a raid plan, or view them.
+
 ![Gym found raids](https://github.com/JeevesChauhan/lets_go/blob/master/screenshots/ss_gym_spotted.png)
 
 ### Pokestops
 The pokestop marker works the same way as the gym marker except users can only create poke events on these markers. 
+
 ![Pokesotp no events](https://github.com/JeevesChauhan/lets_go/blob/master/screenshots/ss_pokestop_empty.png)
 
 (A poke event is created)
+
 ![Pokestop found events](https://github.com/JeevesChauhan/lets_go/blob/master/screenshots/ss_pokestop_event.png)
