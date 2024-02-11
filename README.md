@@ -1,7 +1,8 @@
+>[!NOTE]
+> University Project 2019/2022. The goal was to use Ruby on Rails to make a web app.
+
 ![Logo](https://github.com/JeevesChauhan/lets_go/blob/master/app/assets/images/icon_logo.png)
 # Lets Go
-
-University Project 2019/2022. The goal was to use Ruby on Rails to make a web app.
 
 A website to allow Pokemon Go users to orgnaise raids together with each other, as well as highlighting poke events. This sites gives the users an easy-to-use website using the google maps api. 
 
